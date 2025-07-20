@@ -95,3 +95,27 @@ export async function getSubmissionCount(): Promise<number> {
     return 0;
   }
 }
+
+export async function updateSubscription(
+  email: string, 
+  subscribed: boolean
+): Promise<FormState> {
+  try {
+    const { error } = await supabase
+      .from('interest_submissions')
+      .update({ subscribed_to_updates: subscribed })
+      .eq('email', email);
+    
+    if (error) {
+      throw new Error('Failed to update subscription status');
+    }
+
+    revalidatePath('/');
+    return { message: subscribed 
+      ? 'You are now subscribed to updates' 
+      : 'You have been unsubscribed' 
+    };
+  } catch (error) {
+    return { message: getErrorMessage(error) };
+  }
+}
