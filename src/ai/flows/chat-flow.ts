@@ -1,24 +1,13 @@
 'use server';
 
-/**
- * @fileOverview A simple chatbot flow for Project Forge.
- *
- * - chat: A function that handles the client chat request.
- * - chatFlow: The main Genkit flow definition.
- */
-
 import { ai } from '@/ai/genkit';
-import { z } from 'zod';
 import { ChatInputSchema, type ChatMessage } from '@/types/chat';
+import { z } from 'zod';
 
-
-// Client-exposed function
 export async function chat(history: ChatMessage[]): Promise<string> {
-  const result = await chatFlow(history);
-  return result;
+  return await chatFlow(history);
 }
 
-// AI flow definition
 const chatFlow = ai.defineFlow(
   {
     name: 'chatFlow',
