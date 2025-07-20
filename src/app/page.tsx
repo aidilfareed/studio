@@ -145,7 +145,7 @@ export default function Home() {
           <div className="px-4 py-16 md:py-24 grid md:grid-cols-2 gap-12 items-center">
             <div className="order-2 md:order-1">
                <Image 
-                src="https://placehold.co/600x400.png"
+                src="https://static.vecteezy.com/system/resources/previews/004/437/931/non_2x/deployment-concept-icon-data-send-receive-product-release-usability-test-delivering-completed-software-to-consumers-idea-thin-line-illustration-isolated-outline-drawing-editable-stroke-vector.jpg"
                 alt="Cloud deployment dashboard"
                 width={600}
                 height={400}

@@ -21,6 +21,12 @@ const nextConfig: NextConfig = {
         hostname: 'www.lifewire.com',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'static.vecteezy.com',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
