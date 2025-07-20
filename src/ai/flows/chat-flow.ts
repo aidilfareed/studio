@@ -29,10 +29,8 @@ const chatFlow = ai.defineFlow(
     Keep your answers concise and helpful.`;
 
     const response = await ai.generate({
-      prompt: {
-        system: systemPrompt,
-        messages: history,
-      },
+      system: systemPrompt,
+      messages: history,
       config: {
         temperature: 0.7,
       },
