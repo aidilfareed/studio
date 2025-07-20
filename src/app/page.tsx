@@ -92,10 +92,10 @@ export default function Home() {
         <section id="hero" className="container mx-auto px-4 py-16 md:py-24">
           <div className="grid lg:grid-cols-5 lg:gap-12 items-center">
             <div className="lg:col-span-3 text-center lg:text-left">
-              <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-4 bg-gradient-to-br from-primary from-30% to-primary/70 bg-clip-text text-transparent">
+              <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-4 bg-gradient-to-br from-primary to-primary/70 bg-clip-text text-transparent">
                 Project Forge
               </h1>
-              <p className="text-2xl md:text-3xl font-semibold text-foreground">
+              <p className="text-2xl md:text-3xl font-semibold text-foreground mb-4">
                 Build & Ship Your MVP in 30 Days
               </p>
               <p className="mt-4 max-w-xl mx-auto lg:mx-0 text-lg md:text-xl text-foreground/80">
@@ -152,7 +152,7 @@ export default function Home() {
             </div>
             <div>
               <Image 
-                src="https://www.lifewire.com/thmb/m3LAzZuZc-jg8ozDvdOr7RLG1js=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/online-business-540487840-577047f23df78cb62c867e24.jpg"
+                src="https://placehold.co/600x400.png"
                 alt="A code editor showing React code"
                 width={600}
                 height={400}
@@ -167,7 +167,7 @@ export default function Home() {
           <div className="px-4 py-16 md:py-24 grid md:grid-cols-2 gap-12 items-center">
             <div className="order-last md:order-first">
                <Image 
-                src="https://www.orange-business.com/sites/default/files/illustration-obs---conseil-%26-transformation---integration-%26-deploiement.png"
+                src="https://placehold.co/600x400.png"
                 alt="Cloud deployment dashboard"
                 width={600}
                 height={400}
