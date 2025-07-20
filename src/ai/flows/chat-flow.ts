@@ -1,31 +1,41 @@
+
 'use server';
 
 import { ai } from '@/ai/genkit';
 import { ChatInputSchema, type ChatMessage } from '@/types/chat';
 import { z } from 'zod';
 
-// Client-exposed entry point
 export async function chat(history: ChatMessage[]): Promise<string> {
-  const result = await chatFlow(history);
-  return result;
+  return await chatFlow(history);
 }
 
-// Genkit AI flow
 const chatFlow = ai.defineFlow(
   {
     name: 'chatFlow',
     inputSchema: ChatInputSchema,
     outputSchema: z.string(),
   },
-  async (history) => {
+  async (historyRaw) => {
+    const parseResult = ChatInputSchema.safeParse(historyRaw);
+    if (!parseResult.success) {
+      console.error('Invalid ChatMessage input:', parseResult.error);
+      throw new Error('Invalid chat message format');
+    }
+
+    const history = parseResult.data;
+
     const systemPrompt = `You are a helpful assistant for a company called Project Forge.
 Project Forge is a coding course that teaches users to build and ship an MVP in 30 days.
 Keep your answers concise and helpful.`;
+    
+    const messages = history.map((msg) => ({
+      role: msg.role,
+      content: [{ text: msg.content }],
+    }));
 
-    // Call the Genkit AI generation function
     const response = await ai.generate({
       system: systemPrompt,
-      messages: history,
+      messages: messages,
       config: {
         temperature: 0.7,
       },
