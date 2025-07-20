@@ -10,17 +10,18 @@ import type { MouseEvent } from 'react';
 import { ThemeToggle } from '../theme-toggle';
 
 const navLinks = [
-  { href: "#features", label: "Features" },
-  { href: "#what-youll-build", label: "What You'll Build" },
-  { href: "#faq", label: "FAQ" },
+  { href: "#features", label: "Features", isPageLink: false },
+  { href: "#what-youll-build", label: "What You'll Build", isPageLink: false },
+  { href: "/chat", label: "Chat", isPageLink: true },
+  { href: "#faq", label: "FAQ", isPageLink: false },
 ];
 
 export function Header() {
   const pathname = usePathname();
 
   const handleScroll = (e: MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
     if (href.startsWith("#")) {
+      e.preventDefault();
       const elementId = href.substring(1);
       const element = document.getElementById(elementId);
       if (element) {
@@ -28,6 +29,37 @@ export function Header() {
       }
     }
   };
+
+  const renderLink = (link: typeof navLinks[0]) => {
+     if (link.isPageLink) {
+      return (
+        <Link
+          key={link.href}
+          href={link.href}
+          className={cn(
+            "transition-colors hover:text-foreground/80",
+            pathname === link.href ? "text-foreground" : "text-foreground/60"
+          )}
+        >
+          {link.label}
+        </Link>
+      );
+    }
+    // Only render scroll links on the homepage
+    if (pathname === '/') {
+      return (
+        <a
+          key={link.href}
+          href={link.href}
+          onClick={(e) => handleScroll(e, link.href)}
+          className="transition-colors hover:text-foreground/80 text-foreground/60"
+        >
+          {link.label}
+        </a>
+      );
+    }
+    return null;
+  }
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -38,21 +70,18 @@ export function Header() {
             <span className="font-bold">Project Forge</span>
           </Link>
           <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
-            {navLinks.map(link => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={(e) => handleScroll(e, link.href)}
-                className="transition-colors hover:text-foreground/80 text-foreground/60"
-              >
-                {link.label}
-              </a>
-            ))}
+            {navLinks.map(renderLink)}
           </nav>
         </div>
         <div className="flex flex-1 items-center justify-end space-x-2">
           <ThemeToggle />
-          <Button onClick={(e) => handleScroll(e as any, '#waitlist-form')}>Register</Button>
+          {pathname === '/' ? (
+             <Button onClick={(e) => handleScroll(e as any, '#waitlist-form')}>Register</Button>
+          ) : (
+            <Link href="/#waitlist-form">
+              <Button>Register</Button>
+            </Link>
+          )}
         </div>
       </div>
     </header>
