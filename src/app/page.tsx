@@ -1,7 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
-import { CheckCircle, Code, Database, FolderGit, Palette } from "lucide-react";
+import { CheckCircle, Code, Database, FolderGit, Palette, Zap } from "lucide-react";
 import Image from "next/image";
 import type { ReactNode } from "react";
 import { SubmissionCounter } from "@/components/submission-counter";
@@ -23,10 +23,10 @@ const features = [
     title: "Supabase Ready",
     description: "Integrated Supabase client library. Easily connect to your Supabase backend for database, authentication, and storage."
   },
-  {
-    icon: <FolderGit className="h-10 w-10 text-primary" />,
-    title: "Modern Structure",
-    description: "A well-organized project structure that promotes code reusability, maintainability, and follows community best practices."
+    {
+    icon: <Zap className="h-10 w-10 text-primary" />,
+    title: "AI-Powered",
+    description: "Includes Genkit for seamless integration of generative AI features, allowing you to build intelligent applications from day one."
   }
 ];
 
@@ -65,8 +65,8 @@ export default function Home() {
         <section className="container mx-auto px-4 py-16 md:py-24">
           <div className="grid lg:grid-cols-5 lg:gap-12 items-center">
             <div className="lg:col-span-3 text-center lg:text-left">
-              <p className="text-lg font-medium text-primary">Vibe Coding Course</p>
-              <h1 className="font-headline text-4xl md:text-6xl font-black text-foreground tracking-tight mt-2">
+              <p className="text-lg font-medium text-primary">Project Forge</p>
+              <h1 className="text-4xl md:text-6xl font-bold text-foreground tracking-tight mt-2">
                 Build & Ship Your MVP in 30 Days
               </h1>
               <p className="mt-4 max-w-xl mx-auto lg:mx-0 text-lg md:text-xl text-foreground/80">
@@ -79,7 +79,7 @@ export default function Home() {
             <div className="lg:col-span-2 mt-12 lg:mt-0">
                <Card className="shadow-2xl">
                 <CardHeader>
-                  <CardTitle>Join the Project Forge Waitlist</CardTitle>
+                  <CardTitle>Join the Course Waitlist</CardTitle>
                   <CardDescription>
                     Be the first to know when we launch. We'll send you an email when we're ready.
                   </CardDescription>
