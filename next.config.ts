@@ -3,10 +3,10 @@ import type {NextConfig} from 'next';
 const nextConfig: NextConfig = {
   /* config options here */
   typescript: {
-    ignoreBuildErrors: true,
+    ignoreBuildErrors: false, // Enable type checking for production builds
   },
   eslint: {
-    ignoreDuringBuilds: true,
+    ignoreDuringBuilds: false, // Enable linting for production builds
   },
   images: {
     remotePatterns: [
@@ -18,6 +18,7 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  output: 'standalone', // Optimized for Node.js server environments like Netlify
 };
 
 export default nextConfig;
