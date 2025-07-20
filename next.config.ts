@@ -27,6 +27,12 @@ const nextConfig: NextConfig = {
         hostname: 'www.orange-business.com',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'i0.wp.com',
+        port: '',
+        pathname: '/**',
       }
     ],
   },

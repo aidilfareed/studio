@@ -168,12 +168,12 @@ export default function Home() {
           <div className="px-4 py-16 md:py-24 grid md:grid-cols-2 gap-12 items-center">
             <div className="order-last md:order-first">
                <Image 
-                src="https://placehold.co/600x400.png"
+                src="https://i0.wp.com/kartaca.com/wp-content/uploads/2021/07/Computer-Server-1-e1659437907655.png?fit=700%2C540&ssl=1"
                 alt="Cloud deployment dashboard"
                 width={600}
                 height={400}
                 className="rounded-lg shadow-2xl mx-auto"
-                data-ai-hint="dashboard webapp"
+                data-ai-hint="computer server"
               />
             </div>
             <div>
