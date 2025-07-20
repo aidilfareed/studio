@@ -25,10 +25,14 @@ export async function submitInterest(
   prevState: FormState,
   formData: FormData
 ): Promise<FormState> {
+  // Correctly parse the checkbox value from FormData.
+  // A checked checkbox sends 'on', an unchecked one sends nothing (null).
+  const subscribed = formData.get('subscribed_to_updates') === 'on';
+
   const validatedFields = FormSchema.safeParse({
     name: formData.get('name'),
     email: formData.get('email'),
-    subscribed_to_updates: formData.get('subscribed_to_updates') === 'on',
+    subscribed_to_updates: subscribed,
   });
 
   if (!validatedFields.success) {
