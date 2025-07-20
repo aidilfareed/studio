@@ -5,20 +5,24 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
+import type { MouseEvent } from 'react';
 
 const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/dashboard", label: "Dashboard" },
-  { href: "/settings", label: "Settings" },
+  { href: "#features", label: "Features" },
+  { href: "#what-youll-build", label: "What You'll Build" },
 ];
 
 export function Header() {
   const pathname = usePathname();
 
-  const handleScrollToForm = () => {
-    const formElement = document.getElementById('waitlist-form');
-    if (formElement) {
-      formElement.scrollIntoView({ behavior: 'smooth' });
+  const handleScroll = (e: MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    if (href.startsWith("#")) {
+      const elementId = href.substring(1);
+      const element = document.getElementById(elementId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
@@ -32,21 +36,19 @@ export function Header() {
           </Link>
           <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
             {navLinks.map(link => (
-              <Link
+              <a
                 key={link.href}
                 href={link.href}
-                className={cn(
-                  "transition-colors hover:text-foreground/80",
-                  pathname === link.href ? "text-foreground" : "text-foreground/60"
-                )}
+                onClick={(e) => handleScroll(e, link.href)}
+                className="transition-colors hover:text-foreground/80 text-foreground/60"
               >
                 {link.label}
-              </Link>
+              </a>
             ))}
           </nav>
         </div>
         <div className="flex flex-1 items-center justify-end space-x-2">
-          <Button onClick={handleScrollToForm}>Get Started</Button>
+          <Button onClick={(e) => handleScroll(e as any, '#waitlist-form')}>Get Started</Button>
         </div>
       </div>
     </header>

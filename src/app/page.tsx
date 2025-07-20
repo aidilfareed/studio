@@ -69,7 +69,7 @@ export default function Home() {
     <div className="flex flex-col min-h-screen bg-background">
       <Header />
       <main className="flex-grow">
-        <section className="container mx-auto px-4 py-16 md:py-24">
+        <section id="hero" className="container mx-auto px-4 py-16 md:py-24">
           <div className="grid lg:grid-cols-5 lg:gap-12 items-center">
             <div className="lg:col-span-3 text-center lg:text-left">
               <p className="text-xl md:text-2xl font-bold text-primary">Project Forge</p>
@@ -99,7 +99,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="container mx-auto px-4 pb-16 md:pb-24">
+        <section id="features" className="container mx-auto px-4 pb-16 md:pb-24">
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold">A Better Way to Learn Full-Stack Development</h2>
             <p className="mt-4 text-lg text-muted-foreground">
@@ -113,7 +113,7 @@ export default function Home() {
           </div>
         </section>
         
-        <section className="bg-secondary/50">
+        <section id="what-youll-build" className="bg-secondary/50">
           <div className="container mx-auto px-4 py-16 md:py-24 grid md:grid-cols-2 gap-12 items-center">
              <div>
               <h2 className="text-3xl md:text-4xl font-bold mb-6">What You'll Build</h2>
@@ -141,7 +141,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="container mx-auto">
+        <section id="deployment" className="container mx-auto">
           <div className="px-4 py-16 md:py-24 grid md:grid-cols-2 gap-12 items-center">
             <div className="order-last md:order-first">
                <Image 
