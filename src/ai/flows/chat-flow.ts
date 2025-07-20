@@ -4,21 +4,11 @@
  * @fileOverview A simple chatbot flow.
  *
  * - chat - A function that handles the chat conversation.
- * - ChatMessage - The type for a single chat message.
  */
 
 import { ai } from '@/ai/genkit';
 import { z } from 'zod';
-
-// Define the schema for a single chat message
-export const ChatMessageSchema = z.object({
-  role: z.enum(['user', 'model']),
-  content: z.string(),
-});
-export type ChatMessage = z.infer<typeof ChatMessageSchema>;
-
-// Define the schema for the chat flow input (a history of messages)
-const ChatInputSchema = z.array(ChatMessageSchema);
+import { ChatInputSchema, type ChatMessage } from '@/types/chat';
 
 // Exported wrapper function to be called from the client
 export async function chat(history: ChatMessage[]): Promise<string> {

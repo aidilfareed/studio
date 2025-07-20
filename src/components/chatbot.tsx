@@ -8,8 +8,9 @@ import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Bot, Loader2, Send, User } from 'lucide-react';
-import { type ChatMessage, chat } from '@/ai/flows/chat-flow';
+import { chat } from '@/ai/flows/chat-flow';
 import { cn } from '@/lib/utils';
+import type { ChatMessage } from '@/types/chat';
 
 export function Chatbot() {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
