@@ -7,10 +7,12 @@ import { Button } from '@/components/ui/button';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import type { MouseEvent } from 'react';
+import { ThemeToggle } from '../theme-toggle';
 
 const navLinks = [
   { href: "#features", label: "Features" },
   { href: "#what-youll-build", label: "What You'll Build" },
+  { href: "#faq", label: "FAQ" },
 ];
 
 export function Header() {
@@ -49,6 +51,7 @@ export function Header() {
           </nav>
         </div>
         <div className="flex flex-1 items-center justify-end space-x-2">
+          <ThemeToggle />
           <Button onClick={(e) => handleScroll(e as any, '#waitlist-form')}>Register</Button>
         </div>
       </div>

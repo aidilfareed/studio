@@ -1,3 +1,4 @@
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
@@ -42,6 +43,25 @@ const deploymentFeatures = [
     { text: "Simplified environment setup for a smooth CI/CD pipeline.", boldText: "Environment Ready:" },
     { text: "A modern, serverless foundation that scales with your project's needs.", boldText: "Scalable Architecture:" },
 ]
+
+const faqItems = [
+  {
+    question: "Is this course for beginners or experienced developers?",
+    answer: "Project Forge is designed for developers with some foundational knowledge of HTML, CSS, and JavaScript. While we cover advanced topics, the project-based approach makes it accessible for those looking to level up from beginner tutorials to real-world application development."
+  },
+  {
+    question: "What if I get stuck?",
+    answer: "You'll have access to a dedicated community forum and instructor support to help you with any challenges you encounter. We're committed to helping you succeed and complete the project."
+  },
+  {
+    question: "Do I need to pay for any of the tools or services used?",
+    answer: "All the core technologies used in the course, including Next.js, Supabase, and Genkit, have generous free tiers that are more than sufficient for building and deploying your project. We'll guide you on how to stay within these free limits."
+  },
+  {
+    question: "How long will I have access to the course materials?",
+    answer: "You will have lifetime access to all course materials, including video lessons, source code, and community forums. You can learn at your own pace and revisit the content whenever you like."
+  }
+];
 
 const FeatureCard = ({ icon, title, description }: { icon: ReactNode, title: string, description: string }) => (
   <Card className="text-center hover:shadow-lg transition-shadow duration-300 flex flex-col bg-card/50 backdrop-blur-sm">
@@ -168,6 +188,27 @@ export default function Home() {
                 ))}
               </ul>
             </div>
+          </div>
+        </section>
+        
+        <section id="faq" className="container mx-auto px-4 py-16 md:py-24">
+          <div className="text-center max-w-3xl mx-auto">
+             <h2 className="text-3xl md:text-4xl font-bold">Frequently Asked Questions</h2>
+             <p className="mt-4 text-lg text-muted-foreground">
+              Find answers to common questions about the course, prerequisites, and what you'll learn.
+            </p>
+          </div>
+          <div className="max-w-3xl mx-auto mt-12">
+            <Accordion type="single" collapsible className="w-full">
+              {faqItems.map((item, index) => (
+                <AccordionItem key={index} value={`item-${index}`}>
+                  <AccordionTrigger className="text-left">{item.question}</AccordionTrigger>
+                  <AccordionContent className="text-base text-muted-foreground">
+                    {item.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </div>
         </section>
       </main>
