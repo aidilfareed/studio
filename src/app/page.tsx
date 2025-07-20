@@ -130,7 +130,7 @@ export default function Home() {
             </div>
             <div className="order-2 md:order-1">
               <Image 
-                src="https://placehold.co/600x400/1e293b/ffffff.png"
+                src="https://placehold.co/600x400.png"
                 alt="A code editor showing React code"
                 width={600}
                 height={400}
@@ -145,7 +145,7 @@ export default function Home() {
           <div className="px-4 py-16 md:py-24 grid md:grid-cols-2 gap-12 items-center">
             <div className="order-2 md:order-1">
                <Image 
-                src="https://placehold.co/600x400/3b82f6/ffffff.png"
+                src="https://placehold.co/600x400.png"
                 alt="Cloud deployment dashboard"
                 width={600}
                 height={400}
