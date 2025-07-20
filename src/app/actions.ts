@@ -11,17 +11,12 @@ const FormSchema = z.object({
   subscribed_to_updates: z.boolean().optional(),
 });
 
-const BroadcastSchema = z.object({
-  message: z.string().min(10, { message: 'Message must be at least 10 characters.' }),
-});
-
 export type FormState = {
   message: string;
   errors?: {
     name?: string[];
     email?: string[];
     subscribed_to_updates?: string[];
-    message?: string[];
   };
 };
 
@@ -100,79 +95,5 @@ export async function getSubmissionCount(): Promise<number> {
   } catch (error) {
     console.error('Failed to fetch submission count:', getErrorMessage(error));
     return 0;
-  }
-}
-
-export async function updateSubscription(
-  email: string,
-  subscribed: boolean
-): Promise<FormState> {
-  try {
-    const { error } = await supabase
-      .from('interest_submissions')
-      .update({ subscribed_to_updates: subscribed })
-      .eq('email', email);
-
-    if (error) {
-      throw new Error('Failed to update subscription status');
-    }
-
-    revalidatePath('/');
-    return {
-      message: subscribed
-        ? 'You are now subscribed to updates.'
-        : 'You have been unsubscribed.',
-    };
-  } catch (error) {
-    return { message: getErrorMessage(error) };
-  }
-}
-
-export async function sendBroadcast(
-  prevState: FormState,
-  formData: FormData
-): Promise<FormState> {
-  const validatedFields = BroadcastSchema.safeParse({
-    message: formData.get('message'),
-  });
-
-  if (!validatedFields.success) {
-    return {
-      message: 'Validation failed.',
-      errors: validatedFields.error.flatten().fieldErrors,
-    };
-  }
-
-  const { message } = validatedFields.data;
-
-  try {
-    const { data: subscribers, error } = await supabase
-      .from('interest_submissions')
-      .select('email')
-      .eq('subscribed_to_updates', true);
-
-    if (error) {
-      throw new Error('Failed to fetch subscribers.');
-    }
-
-    if (!subscribers || subscribers.length === 0) {
-      return { message: 'No subscribers to send to.' };
-    }
-
-    console.log('--- SIMULATING EMAIL BROADCAST ---');
-    console.log(`Message: "${message}"`);
-    console.log('This would be sent to the following emails:');
-    
-    for (const subscriber of subscribers) {
-      // In a real app, you would use an email service here.
-      // e.g., await resend.emails.send({ ... });
-      console.log(`- ${subscriber.email}`);
-    }
-    
-    console.log(`--- BROADCAST SIMULATION COMPLETE (${subscribers.length} emails) ---`);
-
-    return { message: `Broadcast sent to ${subscribers.length} subscribers! (Check server console)` };
-  } catch (error) {
-    return { message: getErrorMessage(error) };
   }
 }
