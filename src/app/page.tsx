@@ -92,7 +92,7 @@ export default function Home() {
         <section id="hero" className="container mx-auto px-4 py-16 md:py-24">
           <div className="grid lg:grid-cols-5 lg:gap-12 items-center">
             <div className="lg:col-span-3 text-center lg:text-left">
-              <h1 className="text-4xl md:text-6xl font-bold text-primary tracking-tight mb-4">
+              <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-4 bg-gradient-to-br from-primary from-30% to-primary/70 bg-clip-text text-transparent">
                 Project Forge
               </h1>
               <p className="text-2xl md:text-3xl font-semibold text-foreground">
