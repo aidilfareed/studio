@@ -10,7 +10,6 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/dashboard", label: "Dashboard" },
   { href: "/settings", label: "Settings" },
-  { href: "/admin", label: "Admin" },
 ];
 
 export function Header() {
