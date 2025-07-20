@@ -28,14 +28,11 @@ const chatFlow = ai.defineFlow(
     Project Forge is a coding course that teaches users to build and ship an MVP in 30 days.
     Keep your answers concise and helpful.`;
 
-    const model = ai.getModel();
-
     const response = await ai.generate({
       prompt: {
         system: systemPrompt,
         messages: history,
       },
-      model: model,
       config: {
         temperature: 0.7,
       },
