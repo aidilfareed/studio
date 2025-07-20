@@ -1,3 +1,4 @@
+
 "use client";
 
 import { GitMerge } from 'lucide-react';
@@ -48,7 +49,7 @@ export function Header() {
           </nav>
         </div>
         <div className="flex flex-1 items-center justify-end space-x-2">
-          <Button onClick={(e) => handleScroll(e as any, '#waitlist-form')}>Get Started</Button>
+          <Button onClick={(e) => handleScroll(e as any, '#waitlist-form')}>Register</Button>
         </div>
       </div>
     </header>
