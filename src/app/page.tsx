@@ -75,7 +75,7 @@ export default function Home() {
               <h1 className="text-4xl md:text-6xl font-bold text-primary tracking-tight">
                 Project Forge
               </h1>
-              <p className="text-xl md:text-2xl font-semibold text-foreground mt-2">
+              <p className="text-2xl md:text-3xl font-semibold text-foreground mt-2">
                 Build & Ship Your MVP in 30 Days
               </p>
               <p className="mt-4 max-w-xl mx-auto lg:mx-0 text-lg md:text-xl text-foreground/80">
