@@ -1,3 +1,4 @@
+
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Footer } from "@/components/layout/footer";
@@ -92,7 +93,7 @@ export default function Home() {
         <section id="hero" className="container mx-auto px-4 py-16 md:py-24">
           <div className="grid lg:grid-cols-5 lg:gap-12 items-center">
             <div className="lg:col-span-3 text-center lg:text-left">
-              <h1 className="text-4xl md:text-6xl font-bold tracking-tight bg-gradient-to-br from-primary to-primary/70 bg-clip-text text-transparent py-2">
+              <h1 className="text-4xl md:text-6xl font-bold tracking-tight bg-gradient-to-br from-primary to-primary/70 bg-clip-text text-transparent py-2 mb-2">
                 Project Forge
               </h1>
               <p className="text-2xl md:text-3xl font-semibold text-foreground mb-4">
