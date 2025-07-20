@@ -18,6 +18,7 @@ const navLinks = [
   { href: "#features", label: "Features", isPageLink: false, scrollTarget: true },
   { href: "#what-youll-build", label: "What You'll Build", isPageLink: false, scrollTarget: true },
   { href: "/idea-generator", label: "Idea Generator", isPageLink: true, scrollTarget: false },
+  { href: "/roadmap-generator", label: "Roadmap Generator", isPageLink: true, scrollTarget: false },
   { href: "/chat", label: "Chat", isPageLink: true, scrollTarget: false },
   { href: "#faq", label: "FAQ", isPageLink: false, scrollTarget: true },
 ];
