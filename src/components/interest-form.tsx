@@ -2,10 +2,10 @@
 "use client";
 
 import { useActionState } from "react";
-import { useForm, useFormContext } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useTransition } from "react";
 
 import { submitInterest } from "@/app/actions";
 import { Button } from "@/components/ui/button";
@@ -26,7 +26,7 @@ import { Loader2, PartyPopper } from "lucide-react";
 const FormSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
   email: z.string().email({ message: "Please enter a valid email." }),
-  subscribed_to_updates: z.boolean().default(false),
+  subscribed_to_updates: z.boolean().default(false).optional(),
 });
 
 type FormData = z.infer<typeof FormSchema>;
@@ -35,13 +35,14 @@ export function InterestForm() {
   const [submitted, setSubmitted] = useState(false);
   const { toast } = useToast();
   const [state, formAction] = useActionState(submitInterest, { message: "" });
+  const [isPending, startTransition] = useTransition();
 
   const form = useForm<FormData>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
       name: "",
       email: "",
-      subscribed_to_updates: false,
+      subscribed_to_updates: true,
     },
     context: state,
   });
@@ -64,6 +65,18 @@ export function InterestForm() {
     form.reset();
     setSubmitted(false);
   };
+  
+  const onSubmit = (data: FormData) => {
+    startTransition(() => {
+        const formData = new FormData();
+        formData.append('name', data.name);
+        formData.append('email', data.email);
+        if (data.subscribed_to_updates) {
+            formData.append('subscribed_to_updates', 'on');
+        }
+        formAction(formData);
+    });
+  }
 
   if (submitted) {
     return (
@@ -84,7 +97,7 @@ export function InterestForm() {
 
   return (
     <Form {...form}>
-      <form action={formAction} className="space-y-6">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         <FormField
           control={form.control}
           name="name"
@@ -134,29 +147,21 @@ export function InterestForm() {
             </FormItem>
           )}
         />
-        <SubmitButton />
+        <Button
+          type="submit"
+          className="w-full"
+          disabled={isPending}
+        >
+          {isPending ? (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Joining...
+            </>
+          ) : (
+            "Join the Waitlist"
+          )}
+        </Button>
       </form>
     </Form>
-  );
-}
-
-function SubmitButton() {
-  const { formState } = useFormContext();
-
-  return (
-    <Button
-      type="submit"
-      className="w-full"
-      disabled={formState.isSubmitting}
-    >
-      {formState.isSubmitting ? (
-        <>
-          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-          Joining...
-        </>
-      ) : (
-        "Join the Waitlist"
-      )}
-    </Button>
   );
 }
