@@ -72,7 +72,7 @@ export default function Home() {
         <section className="container mx-auto px-4 py-16 md:py-24">
           <div className="grid lg:grid-cols-5 lg:gap-12 items-center">
             <div className="lg:col-span-3 text-center lg:text-left">
-              <p className="text-lg font-medium text-primary">Project Forge</p>
+              <p className="text-xl md:text-2xl font-bold text-primary">Project Forge</p>
               <h1 className="text-4xl md:text-6xl font-bold text-foreground tracking-tight mt-2">
                 Build & Ship Your MVP in 30 Days
               </h1>
@@ -83,7 +83,7 @@ export default function Home() {
                  <SubmissionCounter />
               </div>
             </div>
-            <div className="lg:col-span-2 mt-12 lg:mt-0">
+            <div id="waitlist-form" className="lg:col-span-2 mt-12 lg:mt-0">
                <Card className="shadow-2xl bg-card/80 backdrop-blur-sm">
                 <CardHeader>
                   <CardTitle>Join the Course Waitlist</CardTitle>
