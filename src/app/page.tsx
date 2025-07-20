@@ -115,7 +115,7 @@ export default function Home() {
         
         <section className="bg-secondary/50">
           <div className="container mx-auto px-4 py-16 md:py-24 grid md:grid-cols-2 gap-12 items-center">
-             <div className="order-1 md:order-2">
+             <div>
               <h2 className="text-3xl md:text-4xl font-bold mb-6">What You'll Build</h2>
               <p className="text-lg text-foreground/80 mb-8">
                 This isn't a toy project. You'll build a feature-complete application that you can deploy and add to your portfolio.
@@ -128,7 +128,7 @@ export default function Home() {
                 ))}
               </ul>
             </div>
-            <div className="order-2 md:order-1">
+            <div>
               <Image 
                 src="https://www.lifewire.com/thmb/m3LAzZuZc-jg8ozDvdOr7RLG1js=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/online-business-540487840-577047f23df78cb62c867e24.jpg"
                 alt="A code editor showing React code"
@@ -143,7 +143,7 @@ export default function Home() {
 
         <section className="container mx-auto">
           <div className="px-4 py-16 md:py-24 grid md:grid-cols-2 gap-12 items-center">
-            <div className="order-2 md:order-1">
+            <div>
                <Image 
                 src="https://static.vecteezy.com/system/resources/previews/004/437/931/non_2x/deployment-concept-icon-data-send-receive-product-release-usability-test-delivering-completed-software-to-consumers-idea-thin-line-illustration-isolated-outline-drawing-editable-stroke-vector.jpg"
                 alt="Cloud deployment dashboard"
@@ -153,7 +153,7 @@ export default function Home() {
                 data-ai-hint="dashboard webapp"
               />
             </div>
-            <div className="order-1 md:order-2">
+            <div>
               <h2 className="text-3xl md:text-4xl font-bold mb-6">Optimized for Deployment</h2>
               <p className="text-lg text-foreground/80 mb-8">
                 Project Forge is configured for seamless deployment on modern platforms. Get your project from development to production faster than ever.
