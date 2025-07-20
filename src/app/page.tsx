@@ -92,10 +92,10 @@ export default function Home() {
         <section id="hero" className="container mx-auto px-4 py-16 md:py-24">
           <div className="grid lg:grid-cols-5 lg:gap-12 items-center">
             <div className="lg:col-span-3 text-center lg:text-left">
-              <h1 className="text-4xl md:text-6xl font-bold text-primary tracking-tight">
+              <h1 className="text-4xl md:text-6xl font-bold text-primary tracking-tight mb-4">
                 Project Forge
               </h1>
-              <p className="text-2xl md:text-3xl font-semibold text-foreground mt-2">
+              <p className="text-2xl md:text-3xl font-semibold text-foreground">
                 Build & Ship Your MVP in 30 Days
               </p>
               <p className="mt-4 max-w-xl mx-auto lg:mx-0 text-lg md:text-xl text-foreground/80">
