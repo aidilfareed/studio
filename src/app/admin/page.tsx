@@ -11,8 +11,10 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import type { Database } from "@/types/database";
-import { Check, X } from "lucide-react";
+import { Check, X, Send } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 type Submission = Database['public']['Tables']['interest_submissions']['Row'];
 
@@ -37,8 +39,18 @@ export default async function AdminPage() {
     <div className="flex flex-col min-h-screen bg-background">
       <Header />
       <main className="flex-grow container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold mb-2">Admin Panel</h1>
-        <p className="text-muted-foreground mb-8">View waitlist submissions.</p>
+        <div className="flex items-center justify-between mb-8">
+          <div>
+            <h1 className="text-3xl font-bold mb-2">Admin Panel</h1>
+            <p className="text-muted-foreground">View waitlist submissions.</p>
+          </div>
+          <Link href="/admin/broadcast">
+            <Button>
+              <Send className="mr-2" />
+              Send Broadcast
+            </Button>
+          </Link>
+        </div>
         
         <Card>
           <CardHeader>
