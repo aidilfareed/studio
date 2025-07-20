@@ -15,7 +15,6 @@ import {
 } from "@/components/ui/sheet";
 
 const navLinks = [
-  { href: "/", label: "Home", isPageLink: true, scrollTarget: false },
   { href: "/#features", label: "Features", isPageLink: false, scrollTarget: true },
   { href: "/#what-youll-build", label: "What You'll Build", isPageLink: false, scrollTarget: true },
   { href: "/idea-generator", label: "Idea Generator", isPageLink: true, scrollTarget: false },
@@ -25,7 +24,6 @@ const navLinks = [
 
 const handleScroll = (e: MouseEvent<HTMLAnchorElement>, href: string) => {
   e.preventDefault();
-  // Correctly get the element ID by removing the leading '#'
   const elementId = href.substring(1); 
   const element = document.getElementById(elementId);
   if (element) {
