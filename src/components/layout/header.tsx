@@ -12,6 +12,7 @@ import { ThemeToggle } from '../theme-toggle';
 const navLinks = [
   { href: "#features", label: "Features", isPageLink: false },
   { href: "#what-youll-build", label: "What You'll Build", isPageLink: false },
+  { href: "/idea-generator", label: "Idea Generator", isPageLink: true },
   { href: "/chat", label: "Chat", isPageLink: true },
   { href: "#faq", label: "FAQ", isPageLink: false },
 ];
@@ -70,7 +71,7 @@ export function Header() {
             <span className="font-bold">Project Forge</span>
           </Link>
           <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
-            {navLinks.map(renderLink)}
+            {navLinks.map(renderLink).filter(Boolean)}
           </nav>
         </div>
         <div className="flex flex-1 items-center justify-end space-x-2">
