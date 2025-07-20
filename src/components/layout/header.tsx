@@ -24,8 +24,8 @@ const navLinks = [
 
 const handleScroll = (e: MouseEvent<HTMLAnchorElement>, href: string) => {
   e.preventDefault();
-  const elementId = href.substring(1); 
-  const element = document.getElementById(elementId);
+  // The href is the selector for the element (e.g., '#features')
+  const element = document.querySelector(href);
   if (element) {
     element.scrollIntoView({ behavior: 'smooth' });
   }
@@ -35,8 +35,26 @@ export function Header() {
   const pathname = usePathname();
 
   const renderLink = (link: typeof navLinks[0], isMobile: boolean = false) => {
-    if (link.isPageLink) {
+    // Only render scroll links on the homepage
+    if (link.scrollTarget && pathname === '/') {
       return (
+         <a
+          key={link.href}
+          href={link.href}
+          onClick={(e) => handleScroll(e, link.href)}
+          className={cn(
+            "transition-colors hover:text-foreground text-foreground/60",
+            isMobile && "py-2 text-lg"
+          )}
+        >
+          {link.label}
+        </a>
+      );
+    }
+    
+    // Render page links
+    if (link.isPageLink) {
+       return (
         <Link
           key={link.href}
           href={link.href}
@@ -48,22 +66,6 @@ export function Header() {
         >
           {link.label}
         </Link>
-      );
-    }
-    // Only render scroll links on the homepage
-    if (pathname === '/') {
-      return (
-        <a
-          key={link.href}
-          href={link.href}
-          onClick={(e) => handleScroll(e, link.href)}
-          className={cn(
-            "transition-colors hover:text-foreground text-foreground/60",
-            isMobile && "py-2 text-lg"
-          )}
-        >
-          {link.label}
-        </a>
       );
     }
     return null;
