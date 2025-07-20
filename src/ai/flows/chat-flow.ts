@@ -29,16 +29,19 @@ const chatFlow = ai.defineFlow(
     Project Forge is a coding course that teaches users to build and ship an MVP in 30 days.
     Keep your answers concise and helpful.`;
 
-    // Correctly structure the ai.generate call
+    // The system prompt must be the first message in the messages array.
+    const messages: ChatMessage[] = [
+      { role: 'system', content: systemPrompt },
+      ...history,
+    ];
+
     const response = await ai.generate({
-      system: systemPrompt,
-      messages: history, // Pass the history array directly
+      messages: messages, // Pass the combined messages array
       config: {
         temperature: 0.7,
       },
     });
 
-    // Access the response text correctly
     return response.text;
   }
 );
