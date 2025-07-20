@@ -25,8 +25,7 @@ export async function submitInterest(
   prevState: FormState,
   formData: FormData
 ): Promise<FormState> {
-  // Correctly parse the checkbox value from FormData.
-  // A checked checkbox sends 'on', an unchecked one sends nothing (null).
+  // ✅ Fix: Ensure checkbox is correctly parsed as boolean
   const subscribed = formData.get('subscribed_to_updates') === 'on';
 
   const validatedFields = FormSchema.safeParse({
@@ -45,7 +44,7 @@ export async function submitInterest(
   const { name, email, subscribed_to_updates } = validatedFields.data;
 
   try {
-    // Check for duplicate email
+    // ✅ Check for existing email in DB
     const { data: existingSubmission, error: selectError } = await supabase
       .from('interest_submissions')
       .select('email')
@@ -55,7 +54,7 @@ export async function submitInterest(
     if (selectError) {
       throw new Error('Database error checking for existing email.');
     }
-    
+
     if (existingSubmission) {
       return {
         message: 'This email has already been submitted.',
@@ -65,11 +64,15 @@ export async function submitInterest(
       };
     }
 
-    // Insert new submission
+    // ✅ Insert data with correct boolean field
     const { error: insertError } = await supabase
       .from('interest_submissions')
-      .insert({ name, email, subscribed_to_updates });
-    
+      .insert({
+        name,
+        email,
+        subscribed_to_updates,
+      });
+
     if (insertError) {
       throw new Error('Failed to save your submission.');
     }
@@ -101,7 +104,7 @@ export async function getSubmissionCount(): Promise<number> {
 }
 
 export async function updateSubscription(
-  email: string, 
+  email: string,
   subscribed: boolean
 ): Promise<FormState> {
   try {
@@ -109,15 +112,16 @@ export async function updateSubscription(
       .from('interest_submissions')
       .update({ subscribed_to_updates: subscribed })
       .eq('email', email);
-    
+
     if (error) {
       throw new Error('Failed to update subscription status');
     }
 
     revalidatePath('/');
-    return { message: subscribed 
-      ? 'You are now subscribed to updates' 
-      : 'You have been unsubscribed' 
+    return {
+      message: subscribed
+        ? 'You are now subscribed to updates'
+        : 'You have been unsubscribed',
     };
   } catch (error) {
     return { message: getErrorMessage(error) };
