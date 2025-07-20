@@ -1,3 +1,11 @@
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Footer } from "@/components/layout/footer";
@@ -6,6 +14,7 @@ import { CheckCircle, Code, Database, FolderGit, Palette } from "lucide-react";
 import Image from "next/image";
 import type { ReactNode } from "react";
 import { SubmissionCounter } from "@/components/submission-counter";
+import { InterestForm } from "@/components/interest-form";
 
 const features = [
   {
@@ -70,8 +79,20 @@ export default function Home() {
             Effortlessly scaffold modern, production-ready Next.js applications with best practices built-in.
           </p>
           <div className="mt-8 flex justify-center gap-4">
-            <Button size="lg">Get Started</Button>
-            <Button size="lg" variant="outline">Learn More</Button>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button size="lg">Join the Waitlist</Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-[425px]">
+                <DialogHeader>
+                  <DialogTitle>Join the Project Forge Waitlist</DialogTitle>
+                  <DialogDescription>
+                    Be the first to know when we launch. We'll send you an email when we're ready.
+                  </DialogDescription>
+                </DialogHeader>
+                <InterestForm />
+              </DialogContent>
+            </Dialog>
           </div>
           <div className="mt-8">
             <SubmissionCounter />
