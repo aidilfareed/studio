@@ -72,10 +72,12 @@ export default function Home() {
         <section id="hero" className="container mx-auto px-4 py-16 md:py-24">
           <div className="grid lg:grid-cols-5 lg:gap-12 items-center">
             <div className="lg:col-span-3 text-center lg:text-left">
-              <p className="text-xl md:text-2xl font-bold text-primary">Project Forge</p>
-              <h1 className="text-4xl md:text-6xl font-bold text-foreground tracking-tight mt-2">
-                Build & Ship Your MVP in 30 Days
+              <h1 className="text-4xl md:text-6xl font-bold text-primary tracking-tight">
+                Project Forge
               </h1>
+              <p className="text-xl md:text-2xl font-semibold text-foreground mt-2">
+                Build & Ship Your MVP in 30 Days
+              </p>
               <p className="mt-4 max-w-xl mx-auto lg:mx-0 text-lg md:text-xl text-foreground/80">
                 Join a guided, project-based course to build a production-ready application from scratch. Master the modern stack and launch your idea.
               </p>
