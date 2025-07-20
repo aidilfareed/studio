@@ -16,16 +16,19 @@ export function Chatbot() {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const scrollAreaRef = useRef<HTMLDivElement>(null);
+  const viewportRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    // Scroll to the bottom when messages change
-    if (scrollAreaRef.current) {
-      scrollAreaRef.current.scrollTo({
-        top: scrollAreaRef.current.scrollHeight,
+  const scrollToBottom = () => {
+    if (viewportRef.current) {
+      viewportRef.current.scrollTo({
+        top: viewportRef.current.scrollHeight,
         behavior: 'smooth',
       });
     }
+  }
+
+  useEffect(() => {
+    scrollToBottom();
   }, [messages]);
 
   const handleSubmit = async (e: FormEvent) => {
@@ -61,8 +64,8 @@ export function Chatbot() {
         </CardTitle>
       </CardHeader>
       <CardContent className="flex-grow flex flex-col gap-4 min-h-0">
-        <ScrollArea className="flex-grow pr-4" ref={scrollAreaRef}>
-          <div className="space-y-4">
+        <ScrollArea className="flex-grow" viewportRef={viewportRef}>
+          <div className="space-y-4 pr-4">
             {messages.map((message, index) => (
               <div
                 key={index}
