@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 // Define the schema for a single chat message
 export const ChatMessageSchema = z.object({
-  role: z.enum(['user', 'model']),
+  role: z.enum(['user', 'model', 'system', 'assistant']),
   content: z.string(),
 });
 export type ChatMessage = z.infer<typeof ChatMessageSchema>;
