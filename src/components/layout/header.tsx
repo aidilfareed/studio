@@ -25,7 +25,8 @@ const navLinks = [
 
 const handleScroll = (e: MouseEvent<HTMLAnchorElement>, href: string) => {
   e.preventDefault();
-  const elementId = href.substring(1);
+  // Correctly get the element ID by removing the leading '#'
+  const elementId = href.substring(1); 
   const element = document.getElementById(elementId);
   if (element) {
     element.scrollIntoView({ behavior: 'smooth' });
