@@ -72,8 +72,8 @@ export default function Home() {
               <p className="mt-4 max-w-xl mx-auto lg:mx-0 text-lg md:text-xl text-foreground/80">
                 Join a guided, project-based course to build a production-ready application from scratch. Master the modern stack and launch your idea.
               </p>
-              <div className="mt-8">
-                <SubmissionCounter />
+              <div className="mt-8 flex justify-center lg:justify-start">
+                 <SubmissionCounter />
               </div>
             </div>
             <div className="lg:col-span-2 mt-12 lg:mt-0">

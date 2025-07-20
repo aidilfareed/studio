@@ -3,8 +3,13 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
-  title: 'Project Forge',
-  description: 'Effortlessly scaffold modern, production-ready Next.js applications.',
+  title: 'Vibe Coding Course - Build & Ship Your MVP in 30 Days',
+  description: 'Join a guided, project-based course to build a production-ready application from scratch. Master the modern stack and launch your idea.',
+  openGraph: {
+    title: 'Vibe Coding Course - Build & Ship Your MVP in 30 Days',
+    description: 'Join a guided, project-based course to build a production-ready application from scratch. Master the modern stack and launch your idea.',
+    type: 'website',
+  }
 };
 
 export default function RootLayout({

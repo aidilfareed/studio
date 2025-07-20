@@ -16,7 +16,7 @@ async function Counter() {
 
 function CounterSkeleton() {
     return (
-        <div className="flex justify-center items-center h-6">
+        <div className="flex items-center h-6">
             <Skeleton className="h-4 w-64" />
         </div>
     );
