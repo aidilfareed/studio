@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useRef, useEffect, type FormEvent } from 'react';
@@ -5,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Bot, Loader2, Send, User } from 'lucide-react';
 import { chat } from '@/ai/flows/chat-flow';
 import { cn } from '@/lib/utils';
@@ -59,7 +60,7 @@ export function Chatbot() {
           <Bot /> AI Assistant
         </CardTitle>
       </CardHeader>
-      <CardContent className="flex-grow flex flex-col gap-4">
+      <CardContent className="flex-grow flex flex-col gap-4 min-h-0">
         <ScrollArea className="flex-grow pr-4" ref={scrollAreaRef}>
           <div className="space-y-4">
             {messages.map((message, index) => (
