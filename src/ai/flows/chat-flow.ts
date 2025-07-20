@@ -19,14 +19,8 @@ const chatFlow = ai.defineFlow(
 Project Forge is a coding course that teaches users to build and ship an MVP in 30 days.
 Keep your answers concise and helpful.`;
 
-    // Combine system message with chat history
-    const messages: ChatMessage[] = [
-      { role: 'system', content: systemPrompt },
-      ...history,
-    ];
-
-    // (Optional) Validate content types
-    for (const m of messages) {
+    // (Optional) Validate content types - This is for safety, though schema should enforce it
+    for (const m of history) {
       if (typeof m.content !== 'string') {
         console.warn('Invalid content type:', m.content);
         m.content = JSON.stringify(m.content); // fallback to safe string
@@ -35,7 +29,8 @@ Keep your answers concise and helpful.`;
 
     // Call the Genkit AI generation function
     const response = await ai.generate({
-      messages,
+      system: systemPrompt,
+      messages: history,
       config: {
         temperature: 0.7,
       },
