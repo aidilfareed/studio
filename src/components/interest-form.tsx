@@ -1,7 +1,8 @@
+
 "use client";
 
-import { useFormState } from "react-dom";
-import { useForm } from "react-hook-form";
+import { useActionState } from "react";
+import { useForm, useFormContext } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useEffect, useState } from "react";
@@ -33,7 +34,7 @@ type FormData = z.infer<typeof FormSchema>;
 export function InterestForm() {
   const [submitted, setSubmitted] = useState(false);
   const { toast } = useToast();
-  const [state, formAction] = useFormState(submitInterest, { message: "" });
+  const [state, formAction] = useActionState(submitInterest, { message: "" });
 
   const form = useForm<FormData>({
     resolver: zodResolver(FormSchema),
