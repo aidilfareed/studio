@@ -1,12 +1,3 @@
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
@@ -71,31 +62,33 @@ export default function Home() {
     <div className="flex flex-col min-h-screen bg-background">
       <Header />
       <main className="flex-grow">
-        <section className="container mx-auto px-4 py-16 md:py-24 text-center">
-          <h1 className="font-headline text-4xl md:text-6xl font-black text-primary tracking-tight">
-            Welcome to Project Forge
-          </h1>
-          <p className="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-foreground/80">
-            Effortlessly scaffold modern, production-ready Next.js applications with best practices built-in.
-          </p>
-          <div className="mt-8 flex justify-center gap-4">
-            <Dialog>
-              <DialogTrigger asChild>
-                <Button size="lg">Join the Waitlist</Button>
-              </DialogTrigger>
-              <DialogContent className="sm:max-w-[425px]">
-                <DialogHeader>
-                  <DialogTitle>Join the Project Forge Waitlist</DialogTitle>
-                  <DialogDescription>
+        <section className="container mx-auto px-4 py-16 md:py-24">
+          <div className="grid lg:grid-cols-5 lg:gap-12 items-center">
+            <div className="lg:col-span-3 text-center lg:text-left">
+              <p className="text-lg font-medium text-primary">Vibe Coding Course</p>
+              <h1 className="font-headline text-4xl md:text-6xl font-black text-foreground tracking-tight mt-2">
+                Build & Ship Your MVP in 30 Days
+              </h1>
+              <p className="mt-4 max-w-xl mx-auto lg:mx-0 text-lg md:text-xl text-foreground/80">
+                Join a guided, project-based course to build a production-ready application from scratch. Master the modern stack and launch your idea.
+              </p>
+              <div className="mt-8">
+                <SubmissionCounter />
+              </div>
+            </div>
+            <div className="lg:col-span-2 mt-12 lg:mt-0">
+               <Card className="shadow-2xl">
+                <CardHeader>
+                  <CardTitle>Join the Project Forge Waitlist</CardTitle>
+                  <CardDescription>
                     Be the first to know when we launch. We'll send you an email when we're ready.
-                  </DialogDescription>
-                </DialogHeader>
-                <InterestForm />
-              </DialogContent>
-            </Dialog>
-          </div>
-          <div className="mt-8">
-            <SubmissionCounter />
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <InterestForm />
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </section>
 
