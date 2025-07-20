@@ -4,10 +4,13 @@ import { ai } from '@/ai/genkit';
 import { ChatInputSchema, type ChatMessage } from '@/types/chat';
 import { z } from 'zod';
 
+// Client-exposed entry point
 export async function chat(history: ChatMessage[]): Promise<string> {
-  return await chatFlow(history);
+  const result = await chatFlow(history);
+  return result;
 }
 
+// Genkit AI flow
 const chatFlow = ai.defineFlow(
   {
     name: 'chatFlow',
@@ -18,14 +21,6 @@ const chatFlow = ai.defineFlow(
     const systemPrompt = `You are a helpful assistant for a company called Project Forge.
 Project Forge is a coding course that teaches users to build and ship an MVP in 30 days.
 Keep your answers concise and helpful.`;
-
-    // (Optional) Validate content types - This is for safety, though schema should enforce it
-    for (const m of history) {
-      if (typeof m.content !== 'string') {
-        console.warn('Invalid content type:', m.content);
-        m.content = JSON.stringify(m.content); // fallback to safe string
-      }
-    }
 
     // Call the Genkit AI generation function
     const response = await ai.generate({
