@@ -60,14 +60,24 @@ export function InterestForm() {
     }
   }, [state, toast]);
 
+  const handleReset = () => {
+    form.reset();
+    setSubmitted(false);
+  };
+
   if (submitted) {
     return (
-      <div className="text-center py-8">
-        <PartyPopper className="h-12 w-12 mx-auto text-primary mb-4" />
-        <h3 className="text-lg font-semibold">Welcome Aboard!</h3>
-        <p className="text-muted-foreground mt-2">
-          Thank you for joining the waitlist. We'll be in touch soon!
-        </p>
+      <div className="text-center py-8 space-y-4">
+        <div>
+          <PartyPopper className="h-12 w-12 mx-auto text-primary mb-4" />
+          <h3 className="text-lg font-semibold">Welcome Aboard!</h3>
+          <p className="text-muted-foreground mt-2">
+            Thank you for joining the waitlist. We'll be in touch soon!
+          </p>
+        </div>
+        <Button onClick={handleReset} variant="outline">
+          Submit another response
+        </Button>
       </div>
     );
   }
