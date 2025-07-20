@@ -130,7 +130,7 @@ export default function Home() {
             </div>
             <div className="order-2 md:order-1">
               <Image 
-                src="https://placehold.co/600x400.png"
+                src="https://www.lifewire.com/thmb/m3LAzZuZc-jg8ozDvdOr7RLG1js=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/online-business-540487840-577047f23df78cb62c867e24.jpg"
                 alt="A code editor showing React code"
                 width={600}
                 height={400}

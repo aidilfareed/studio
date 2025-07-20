@@ -16,6 +16,12 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'www.lifewire.com',
+        port: '',
+        pathname: '/**',
+      }
     ],
   },
   output: 'standalone', // Optimized for Node.js server environments like Netlify
