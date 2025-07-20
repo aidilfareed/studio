@@ -5,6 +5,7 @@ import { Header } from "@/components/layout/header";
 import { CheckCircle, Code, Database, FolderGit, Palette } from "lucide-react";
 import Image from "next/image";
 import type { ReactNode } from "react";
+import { SubmissionCounter } from "@/components/submission-counter";
 
 const features = [
   {
@@ -71,6 +72,9 @@ export default function Home() {
           <div className="mt-8 flex justify-center gap-4">
             <Button size="lg">Get Started</Button>
             <Button size="lg" variant="outline">Learn More</Button>
+          </div>
+          <div className="mt-8">
+            <SubmissionCounter />
           </div>
         </section>
 
