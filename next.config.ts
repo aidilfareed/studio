@@ -24,7 +24,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'static.vecteezy.com',
+        hostname: 'www.orange-business.com',
         port: '',
         pathname: '/**',
       }

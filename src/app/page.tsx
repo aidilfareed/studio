@@ -143,9 +143,9 @@ export default function Home() {
 
         <section className="container mx-auto">
           <div className="px-4 py-16 md:py-24 grid md:grid-cols-2 gap-12 items-center">
-            <div>
+            <div className="order-last md:order-first">
                <Image 
-                src="https://static.vecteezy.com/system/resources/previews/004/437/931/non_2x/deployment-concept-icon-data-send-receive-product-release-usability-test-delivering-completed-software-to-consumers-idea-thin-line-illustration-isolated-outline-drawing-editable-stroke-vector.jpg"
+                src="https://www.orange-business.com/sites/default/files/illustration-obs---conseil-%26-transformation---integration-%26-deploiement.png"
                 alt="Cloud deployment dashboard"
                 width={600}
                 height={400}
